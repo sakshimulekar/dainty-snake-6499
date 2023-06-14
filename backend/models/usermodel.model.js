@@ -6,7 +6,7 @@ const userSchema=mongoose.Schema({
     pass:String,
     age:String
 },{
-    versionkey:false
+    versionKey:false
 })
 
 const UserModel=mongoose.model("user",userSchema)
