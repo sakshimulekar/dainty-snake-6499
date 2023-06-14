@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import AddProducts from "./AddProduct";
 
-const Admin = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const admin = () => {
+  return <div></div>;
+};
 
-export default Admin
+export default admin;
