@@ -4,13 +4,13 @@ const userSchema=mongoose.Schema({
     name:String,
     email:String,
     pass:String,
-    age:Number
+    age:String
 },{
-    versionKey:false
+    versionkey:false
 })
 
-const userModel=mongoose.model("user",userSchema)
+const UserModel=mongoose.model("user",userSchema)
 
 module.exports={
-    userModel
+    UserModel
 }
