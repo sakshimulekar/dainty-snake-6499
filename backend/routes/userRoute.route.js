@@ -21,7 +21,7 @@ userRoute.post("/register",async(req,res)=>{
         console.log(user)
         if(user){
             console.log(user)
-            res.status(400).json({error:"Registration failed. User already exists"})
+            res.status(200).json({error:"User already exists,Please Login!!"})
         }
         else{
             if(checkPass(pass)){
@@ -34,7 +34,7 @@ userRoute.post("/register",async(req,res)=>{
                 });
             }
             else{
-                res.status(400).json({errro:"Registration failed! Password have at least 8 characters. it should have atleast one uppercase character, one number & a special Character"})
+                res.status(200).json({error:"password should contain 8 chars,at lease one uppercase,a special char,a number"})
             }
         }
     } 
@@ -54,12 +54,12 @@ userRoute.post("/login",async(req,res)=>{
                     res.status(200).json({msg:"Login succssfully",token})
                 }
                 else{
-                    res.status(400).json({msg:"wrong credentials"})
+                    res.status(200).json({error:"wrong credentials"})
                 }
             });
         }
         else{
-            res.status(400).json({msg:"user not found. please register first!!"})
+            res.status(200).json({error:"user not found. please register first!!"})
         }
     } catch (error) {
         res.status(200).json({error:error.message})
