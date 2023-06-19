@@ -6,7 +6,13 @@ import Login from './Login'
 import Logout from './Logout'
 import Productpage from '../pages/Productpage'
 import Admin from '../pages/Admin'
-import Cartpage from '../pages/Cartpage'
+
+
+import SubscriptionPage from './subscribe/SubscriptionPage'
+import PaymentPage from './subscribe/PaymentPage'
+import {Cart} from '../pages/Cart'
+import Payment from '../pages/Payment'
+
 const MainRoute = () => {
   return (
     <div>
@@ -17,7 +23,14 @@ const MainRoute = () => {
         <Route path='/logout' element={<Logout/>}/>
         <Route path='/products' element={<Productpage/>}/>
         <Route path='/admin' element={<Admin/>}/>
-        <Route path='/cart' element={<Cartpage/>}/>
+
+       
+        <Route path='/subscribe' element={<SubscriptionPage/>}/>
+        <Route path='/getsubscription' element={<PaymentPage/>}/>
+
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/payment' element={<Payment/>}/>
+
       </Routes>
     </div>
   )

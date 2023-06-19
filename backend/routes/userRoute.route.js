@@ -3,9 +3,10 @@ const { UserModel } = require("../models/usermodel.model")
 const userRoute=express.Router()
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+const { auth } = require("../middleware/auth.middleware");
 require("dotenv").config()
 
-userRoute.get("/",async(req,res)=>{
+userRoute.get("/",auth,async(req,res)=>{
     try {
         const user=await UserModel.find()
         res.status(200).json({msg:"this is the home page",user})
@@ -90,6 +91,45 @@ const checkPass=(pass)=>{
     }
     return flag1 && flag2 && flag3 ? true : false
 }
+
+userRoute.post('/subscription', auth, async (req, res) => {
+    try {
+      const { user } = req;
+      const { subscription,charge } = req.body;
+      const subscriptionExpiration = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000); // Set expiration to 2 days from now
+      user.charge = charge
+      user.subscription = subscription;
+      user.subscriptionExpiration = subscriptionExpiration;
+
+      console.log(user)
+      const updatedUser = await user.save();
+  
+      res.status(200).json({msg:"subscribe successfully!!",updatedUser});
+    } catch (error) {
+      res.status(200).json({ error: error.message });
+    }
+  });
+  
+
+  userRoute.get('/protected', auth, (req, res) => {
+    const user = req.user;
+    console.log(user,"ewsaz")
+    try {
+        
+        if(!user.subscription ){
+            return res.status(401).json({ error: 'Get Subscription' });
+        } 
+        if (!user.subscription && !user.subscriptionExpiration < Date.now()) {
+                return res.status(401).json({ error: 'Subscription expired' });
+            }         
+        else{
+            res.json({ message: 'Protected content' });
+          }
+        
+    } catch (error) {
+        res.json({ error: error.message });
+    }
+  });
 
 module.exports={
     userRoute

@@ -5,8 +5,12 @@ import Product from './pages/Productpage';
 function App() {
   return (
     <div className="App">
+
       {/* <MainRoute/> */}
-      <Product/>
+ 
+      <Navbar/>
+      <MainRoute/>
+
     </div>
   );
 }
