@@ -74,7 +74,7 @@ export const Cart = () => {
     setCart([]);
   };
   return (
-    <Box width={"90%"} margin="auto">
+    <Box width={"90%"} height={"100vh"} margin="auto">
       <Heading mt={5} textAlign={"center"}>
         Cart
       </Heading>

@@ -14,9 +14,16 @@ import {
   DrawerBody,
   VStack,
   Link,
+  Spacer,
+  InputGroup ,
+  Input ,
+  InputLeftElement,
+ 
 } from "@chakra-ui/react";
+import { SearchIcon , CartIcon } from "@chakra-ui/icons";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import ToggleButton from "./Toggle";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,32 +36,32 @@ const Navbar = () => {
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    navigate("/register");
+  };
+  const handleCart = () => {
+    navigate("/cart");
+  };
+  const handlelogout = () => {
+    navigate("/logout");
+  };
 
   return (
+<>
 
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/register">Sign Up</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/logout">Log out</Link>
-      <Link to="/products">Products</Link>
-      <Link to="/cart">cart</Link>
-      <Link to="/admin">Admin</Link>
-      <Link to="/subscribe">subscribe</Link>
-      <Link to="/getsubscription">purchase</Link>
-     <h1 style={{color:"red"}}>Admin</h1>
-    </div>
-  )
-}
+ 
 
     <Flex
       as="nav"
       align="center"
       justify="space-between"
       padding={4}
-      backgroundColor="sky"
+      bgColor={"blackAlpha"}
       color="grey.800"
       position={"sticky"}
+      border="1px red"
     >
       <Flex align="center">
         <Box marginRight={4}>
@@ -123,11 +130,35 @@ const Navbar = () => {
           <img src="navLog.png" width="200px" />
         </Box>
       </Flex>
-      <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white">
-        Sign In
+      <Flex align="center" bg="blackAlpha.200" p={4}>
+<Box position="absolute" left={20} ml={"200px"}>
+          <InputGroup width="400px">
+            <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.300" />} />
+            <Input type="text" placeholder="Search" size="lg"/>
+          </InputGroup>
+        </Box>
+        <Spacer/>
+        <Box>
+          <Link to="/products" mr={"20px"}>Products</Link>{" "}
+      
+          <Link to="/admin" mr={"20px"}>Admin</Link>{" "}
+          <Link to="/subscribe" mr={"20px"}>Subscribe</Link>{" "}
+          <Link to="/getsubscription" mr={"20px"}>Purchase</Link>
+        </Box>
+        <Spacer />
+        <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handleSignUp} mr={"20px"}>
+        Sign up
       </Button>
+      
+      <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handlelogout} mr={"20px"}>
+        Logout
+      </Button>
+      <Image src="https://th.bing.com/th/id/R.5bb448a94a5be2cd8933ce9e6773f915?rik=hUkrVL2wWJ3n5A&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2fl%2fz%2f3%2fL%2fh%2f3%2fwhite-shopping-cart-hi.png&ehk=EEwjccT0SEeljSit56jGvp4qpd%2bGG2xWtMA54%2b43yvI%3d&risl=&pid=ImgRaw&r=0" width="50px" alt="Cart" onClick={handleCart} mr={2} cursor="pointer" />
+      </Flex>
+      
     </Flex>
-  );
-}
+    </>
+   )
+  }
 
 export default Navbar;

@@ -4,6 +4,7 @@ import MainRoute from "./components/MainRoute"
 function App() {
   return (
     <div className="App">
+      <Navbar/>
       <MainRoute/>
     </div>
   );

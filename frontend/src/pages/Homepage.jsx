@@ -20,7 +20,7 @@ function HomePage() {
   ];
 
   return (
-    <div id="container">
+    <div id="container" border="1px solid red">
       <div
         className="headImage"
         style={{
@@ -29,7 +29,7 @@ function HomePage() {
          textAlign:"center",
         }}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="headContainer">
           <div style={{ marginTop: "60px" }}>
             <h1 style={{ color: "white", fontSize: "50px" }}>
