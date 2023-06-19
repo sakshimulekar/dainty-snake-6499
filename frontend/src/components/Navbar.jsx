@@ -48,22 +48,23 @@ const Navbar = () => {
     navigate("/logout");
   };
 
+  const handle = () => {
+    navigate("/");
+  };
+
   return (
 <>
-
- 
-
     <Flex
       as="nav"
       align="center"
       justify="space-between"
       padding={4}
-      bgColor={"blackAlpha"}
+      bgColor={"black"}
       color="grey.800"
       position={"sticky"}
-      border="1px red"
+      
     >
-      <Flex align="center">
+      <Flex align="center" backgroundColor={"black"}>
         <Box marginRight={4}>
           <IconButton
             icon={<HamburgerIcon boxSize={6}  />}
@@ -77,14 +78,16 @@ const Navbar = () => {
             placement="left"
             onClose={handleMenuClose}
             isOpen={isMenuOpen}
+            
           >
             <DrawerOverlay />
-            <DrawerContent>
+            <DrawerContent >
               <DrawerCloseButton />
-              <DrawerHeader align="center">Gamer's Arena</DrawerHeader>
+            
+              <DrawerHeader align="center"  >Gamer's Arena</DrawerHeader>
               <ToggleButton setToggleNav={setToggleNav} />
-              <DrawerBody>
-                <Box maxH="xlg" overflowY="auto">
+              <DrawerBody >
+                <Box maxH="xlg" overflowY="auto" >
                   <VStack spacing={4} align="start">
                     {toggleNav.map((e) => (
                       <Link href="#">
@@ -94,6 +97,7 @@ const Navbar = () => {
                             height: "30px",
                             display: "flex",
                             justifyContent: "space-between",
+                            
                           }}
                         >
                           <img
@@ -127,24 +131,18 @@ const Navbar = () => {
           </Drawer>
         </Box>
         <Box color={"white"}>
-          <img src="navLog.png" width="200px" />
+          <img src="navLog.png" width="200px" onClick={()=>handle()} cursor={"Pointer"}/>
         </Box>
       </Flex>
       <Flex align="center" bg="blackAlpha.200" p={4}>
-<Box position="absolute" left={20} ml={"200px"}>
+        <Box position="absolute" left={20} ml={"300px"}>
           <InputGroup width="400px">
             <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.300" />} />
             <Input type="text" placeholder="Search" size="lg"/>
           </InputGroup>
         </Box>
         <Spacer/>
-        <Box>
-          <Link to="/products" mr={"20px"}>Products</Link>{" "}
-      
-          <Link to="/admin" mr={"20px"}>Admin</Link>{" "}
-          <Link to="/subscribe" mr={"20px"}>Subscribe</Link>{" "}
-          <Link to="/getsubscription" mr={"20px"}>Purchase</Link>
-        </Box>
+        
         <Spacer />
         <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handleSignUp} mr={"20px"}>
         Sign up

@@ -68,13 +68,14 @@ const Sign = () => {
   };
 
   return ( 
-      <Box bgImage="url('/main_game-website-design-cover.webp')" h="90vh">
+    <Box>
+      <Box bgImage="url('/main_game-website-design-cover.webp')" h="90vh" backdropFilter="blur(2px)" >
         <Box position="absolute" top={0} left={0} w="100%" h="100%" bg="rgba(0, 0, 0, 0)" backdropFilter="blur(2px)" />
         <Heading backdropFilter="blur(2px)" backgroundColor="blackAlpha.100" as="h1">
           Welcome to Gamer's Arena
         </Heading>
 
-        <Box w="30%" margin="auto" p="5" mt="10">
+        <Box w="30%" margin="auto" p="5" mt="10" border={"1px"} bgColor={"blackAlpha.500"}>
           
           {isRegistered ? (
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -142,7 +143,7 @@ const Sign = () => {
           )}
         </Box>
       </Box>
-
+      </Box>
   );
 };
 
