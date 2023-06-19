@@ -4,7 +4,10 @@ const userSchema=mongoose.Schema({
     name:String,
     email:String,
     pass:String,
-    age:String
+    age:String,
+    subscription: {type:String,enum:["Basic","Standard","Premium"]},
+    subscriptionExpiration: Date,
+    charge:Number
 },{
     versionKey:false
 })

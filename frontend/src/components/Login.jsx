@@ -68,7 +68,8 @@ const Sign = () => {
   };
 
   return ( 
-      <Box bgImage="url('/main_game-website-design-cover.webp')" h="90vh">
+      <Box>
+      <Box bgImage="url('/main_game-website-design-cover.webp')" h="90vh" backdropFilter="blur(2px)" >
         <Box position="absolute" top={0} left={0} w="100%" h="100%" bg="rgba(0, 0, 0, 0)" backdropFilter="blur(2px)" />
         <Heading backdropFilter="blur(2px)" backgroundColor="blackAlpha.100" as="h1">
           Welcome to Gamer's Arena
@@ -142,7 +143,7 @@ const Sign = () => {
           )}
         </Box>
       </Box>
-
+      </Box>
   );
 };
 
@@ -159,12 +160,12 @@ const Login = ({ handleRegistration }) => {
   const handleAdd = (e) => {
     const { name, value } = e.target;
     setdata({ ...data, [name]: value });
-    console.log(data);
+    //console.log(data);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
+    //console.log(data);
     fetch('http://localhost:8080/users/login', {
       method: 'POST',
       headers: {

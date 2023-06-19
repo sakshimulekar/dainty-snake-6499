@@ -7,6 +7,8 @@ import Logout from './Logout'
 import Productpage from '../pages/Productpage'
 import Admin from '../pages/Admin'
 import Cartpage from '../pages/Cartpage'
+import SubscriptionPage from './subscribe/SubscriptionPage'
+import PaymentPage from './subscribe/PaymentPage'
 const MainRoute = () => {
   return (
     <div>
@@ -18,6 +20,8 @@ const MainRoute = () => {
         <Route path='/products' element={<Productpage/>}/>
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/cart' element={<Cartpage/>}/>
+        <Route path='/subscribe' element={<SubscriptionPage/>}/>
+        <Route path='/getsubscription' element={<PaymentPage/>}/>
       </Routes>
     </div>
   )
