@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { navArr } from "../components/constant/constant";
+import axios from "axios";
 import {
   Box,
   Flex,
@@ -18,7 +19,7 @@ import {
   InputGroup ,
   Input ,
   InputLeftElement,
- 
+ Alert,AlertIcon
 } from "@chakra-ui/react";
 import { SearchIcon , CartIcon } from "@chakra-ui/icons";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -28,6 +29,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [toggleNav, setToggleNav] = useState(navArr);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleMenuOpen = () => {
     setIsMenuOpen(true);
@@ -44,14 +46,45 @@ const Navbar = () => {
   const handleCart = () => {
     navigate("/cart");
   };
-  const handlelogout = () => {
-    navigate("/logout");
-  };
+  // const handlelogout = () => {
+  //   navigate("/logout");
+  // };
 
   const handle = () => {
     navigate("/");
   };
 
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:8080/users/logout');
+
+  //     // Clear the token from local storage or session storage
+  //     localStorage.removeItem('token');
+
+  //     console.log(response.data.msg);
+  //     // Redirect the user to the login page
+  //     window.location.href = '/';
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/users/logout');
+  
+      // Clear the token from local storage or session storage
+      localStorage.removeItem('token');
+  
+      // Show the success alert
+      setShowAlert(true);
+  
+      console.log(response.data.msg);
+      // Redirect the user to the login page
+      window.location.href = '/';
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
 <>
     <Flex
@@ -148,9 +181,18 @@ const Navbar = () => {
         Sign up
       </Button>
       
-      <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handlelogout} mr={"20px"}>
+      <Box>
+        {showAlert && (
+          <Alert status="success" mb={4} position={"bottom"}>
+            <AlertIcon />
+            Logout successful
+          </Alert>
+        )}
+      <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handleLogout} mr={"20px"}>
         Logout
       </Button>
+      </Box>
+      
       <Image src="https://th.bing.com/th/id/R.5bb448a94a5be2cd8933ce9e6773f915?rik=hUkrVL2wWJ3n5A&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2fl%2fz%2f3%2fL%2fh%2f3%2fwhite-shopping-cart-hi.png&ehk=EEwjccT0SEeljSit56jGvp4qpd%2bGG2xWtMA54%2b43yvI%3d&risl=&pid=ImgRaw&r=0" width="50px" alt="Cart" onClick={handleCart} mr={2} cursor="pointer" />
       </Flex>
       

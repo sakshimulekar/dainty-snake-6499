@@ -4,6 +4,7 @@ const userRoute=express.Router()
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const { auth } = require("../middleware/auth.middleware");
+const { BlacklistModel } = require("../models/black.model");
 require("dotenv").config()
 
 userRoute.get("/",auth,async(req,res)=>{
@@ -130,6 +131,19 @@ userRoute.post('/subscription', auth, async (req, res) => {
         res.json({ error: error.message });
     }
   });
+
+  userRoute.get("/logout" , async (req,res)=>{ 
+    const token = req.headers.authorization?.split(" ")[1] 
+    try { 
+        const blacklistToken = new BlacklistModel({ 
+            token 
+        }) 
+        await blacklistToken.save(); 
+        res.status(200).json({msg:"User has been logged out"}) 
+    } catch (error) { 
+        res.status(200).json({error:error.message}) 
+     }
+ })
 
 module.exports={
     userRoute

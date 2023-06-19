@@ -12,7 +12,7 @@ import SubscriptionPage from './subscribe/SubscriptionPage'
 import PaymentPage from './subscribe/PaymentPage'
 import {Cart} from '../pages/Cart'
 import Payment from '../pages/Payment'
-
+import PrivateRoute from './PrivateRoute'
 const MainRoute = () => {
   return (
     <div>
@@ -24,8 +24,10 @@ const MainRoute = () => {
         <Route path='/products' element={<Productpage/>}/>
         <Route path='/admin' element={<Admin/>}/>
 
-       
-        <Route path='/subscribe' element={<SubscriptionPage/>}/>
+        
+        <Route path='/subscribe' element={
+          <SubscriptionPage/>
+        }/>
         <Route path='/getsubscription' element={<PaymentPage/>}/>
 
         <Route path='/cart' element={<Cart/>}/>
