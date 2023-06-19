@@ -1,0 +1,29 @@
+*{
+    box-sizing: 0;
+    margin: 0;
+  }
+  .headImage {
+    background-image: url("/public/headPic.png");
+  }
+  .container-1440 {
+    
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row; /* Added property to display icons in a row */
+  }
+  
+  .platform-icon {
+    margin: 0 10px; /* Adjust the margin as needed */
+  }
+  
+  .platform-icon img {
+    width: 100px; /* Adjust the size of the icons as needed */
+    height: 100px; /* Adjust the size of the icons as needed */
+  }
+  .ion-padding > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row; /* Added property to display icons in a row */
+  }
+  
