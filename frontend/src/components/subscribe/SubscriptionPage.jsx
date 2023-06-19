@@ -21,7 +21,7 @@ const SubscriptionPage = () => {
   };
 
   return (
-    <Box py={10}  >
+    <Box p={10} h={"90vh"} >
       <Box w="70%" margin='auto'>
       <Center>
         <Heading as="h1" mb={8}>
@@ -44,7 +44,7 @@ const SubscriptionPage = () => {
             <Heading as="h3" size="md" mb={8} bgGradient='linear(to-r, teal.500, green.500)'>
               ${plan.value}/month
             </Heading>
-            <Button colorScheme="green" onClick={() => handleBuyClick(plan)}>
+            <Button colorScheme="green" onClick={() => handleBuyClick(plan)} width={"70%"} boxShadow={"xl"}>
             
               Buy
             </Button>
