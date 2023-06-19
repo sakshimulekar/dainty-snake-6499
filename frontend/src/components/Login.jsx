@@ -1,6 +1,7 @@
 import { Box, FormControl, FormLabel, Input, Button, Heading, Center, Text, useToast, ChakraProvider, extendTheme } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Sign = () => {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ const Sign = () => {
   const [msg, setMsg] = useState("");
   const [age, setAge] = useState("");
   const [isRegistered, setIsRegistered] = useState(false); // Check if registration is done or not
-
+  
   const toast = useToast();
 
   const handleSubmit = (e) => {
@@ -156,7 +157,8 @@ const Login = ({ handleRegistration }) => {
   });
   const [errmsg, setErrmsg] = useState("");
   const [msg, setMsg] = useState("");
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleAdd = (e) => {
     const { name, value } = e.target;
     setdata({ ...data, [name]: value });
@@ -200,21 +202,24 @@ const Login = ({ handleRegistration }) => {
             isClosable: true,
             position:"top"
           });
+          
+          //console.log(location)
         }
         const info = localStorage.setItem('token', res.token);
+        if(info){
+          <Link to={location.state}></Link>
+        }
+        
       })
       .catch((err) => console.log(err));
   };
-
+  
+  
   return (
       <Box >
       <form action="" onSubmit={(e) => handleSubmit(e)}>
         <Box textAlign="center" mb={4} backdropFilter="blur(2px)">
           <Heading as={'h2'} >Login</Heading>
-        </Box>
-
-        <Box mb={4}>
-          {/* <h1>{msg}</h1> */}
         </Box>
 
         <FormControl>
@@ -235,6 +240,8 @@ const Login = ({ handleRegistration }) => {
         <Text mt={2} cursor="pointer" onClick={handleRegistration} backdropFilter="blur(2px)">
           Don't have an account? Register
         </Text>
+
+        
       </form>
       </Box>
     

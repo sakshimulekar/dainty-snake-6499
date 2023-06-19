@@ -243,7 +243,7 @@ const PaymentPage = () => {
         .catch((err) => {
           console.log(err);
           // Handle payment failure
-          navigate("/subscribe"); // Assuming you have a "/subscribe" route for the subscription page
+          navigate("/login"); // Assuming you have a "/subscribe" route for the subscription page
         });
     }
   };
