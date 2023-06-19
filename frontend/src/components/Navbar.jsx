@@ -143,7 +143,8 @@ const Navbar = () => {
       
           <Link to="/admin" mr={"20px"}>Admin</Link>{" "}
           <Link to="/subscribe" mr={"20px"}>Subscribe</Link>{" "}
-          <Link to="/getsubscription" mr={"20px"}>Purchase</Link>
+          <Link to="/getsubscription" mr={"20px"}>Purchase</Link>{" "}
+          <Link to="/singleproduct" mr={"20px"}>Product</Link>
         </Box>
         <Spacer />
         <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handleSignUp} mr={"20px"}>
