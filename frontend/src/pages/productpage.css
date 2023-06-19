@@ -1,36 +1,62 @@
-/* Product.css */
 .product-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .filter-container {
+    margin-bottom: 20px;
+  }
+  
+  .filter-container select {
+    margin-right: 10px;
   }
   
   .product-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
   }
   
   .product-image {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
   }
   
   .product-title {
-    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 5px;
   }
   
-  .product-release-date {
-    margin-top: 5px;
+  .product-rating,
+  .product-price {
+    margin-bottom: 5px;
   }
   
   .buy-button {
-    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
     padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
   }
+  
+  .buy-button:hover {
+    background-color: #45a049;
+  }
+  
+  .rent-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .rent-button:hover {
+    background-color: #d32f2f;
+  }
+  
