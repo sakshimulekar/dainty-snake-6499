@@ -1,0 +1,36 @@
+/* Product.css */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .product-title {
+    margin-top: 10px;
+  }
+  
+  .product-release-date {
+    margin-top: 5px;
+  }
+  
+  .buy-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
