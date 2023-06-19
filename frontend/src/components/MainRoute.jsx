@@ -6,7 +6,8 @@ import Login from './Login'
 import Logout from './Logout'
 import Productpage from '../pages/Productpage'
 import Admin from '../pages/Admin'
-import Cartpage from '../pages/Cartpage'
+import {Cart} from '../pages/Cart'
+import Payment from '../pages/Payment'
 const MainRoute = () => {
   return (
     <div>
@@ -17,7 +18,8 @@ const MainRoute = () => {
         <Route path='/logout' element={<Logout/>}/>
         <Route path='/products' element={<Productpage/>}/>
         <Route path='/admin' element={<Admin/>}/>
-        <Route path='/cart' element={<Cartpage/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/payment' element={<Payment/>}/>
       </Routes>
     </div>
   )

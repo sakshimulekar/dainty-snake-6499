@@ -8,6 +8,7 @@ const auth = (req,res,next) =>{
             if(decoded){
                 console.log(decoded)
                 req.body.userID=decoded.userID
+                console.log("fdjbasidb",req.body.userID)
                 req.body.user = decoded.user
                 next()
             }else{
