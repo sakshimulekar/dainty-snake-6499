@@ -233,7 +233,7 @@ const PaymentPage = () => {
             setSuccessModalOpen(true);
             // Redirect to the product page after a certain delay (e.g., 3 seconds)
             setTimeout(() => {
-              navigate("/product");
+              navigate("/products");
             }, 3000);
           } else {
             // Handle payment failure
@@ -250,7 +250,7 @@ const PaymentPage = () => {
 
   const closeModal = () => {
     setSuccessModalOpen(false);
-    navigate("/product");
+    navigate("/products");
   };
 
   return (

@@ -175,9 +175,9 @@ const Navbar = () => {
           </InputGroup>
         </Box>
         <Spacer/>
-        <Box>
+        {/* <Box>
           <Link to="/singleproduct" mr={"20px"}>Product</Link>
-        </Box>
+        </Box> */}
         <Spacer />
         <Button variant="outline" colorScheme="white" backgroundColor="orange.700" color="white" onClick={handleSignUp} mr={"20px"}>
         Sign up

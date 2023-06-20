@@ -24,13 +24,17 @@ export const Cart = () => {
   const toast = useToast();
   let [cartItems, setCart] = useState([]);
   useEffect(() => {
-    const cartData = JSON.parse(localStorage.getItem("Cart")) || [];
+    const cartData = JSON.parse(localStorage.getItem("cart")) 
+    const Data = cartData.map((el)=>{
+      el.quantity=1
+    })
+    console.log(cartData)
     setCart(cartData);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("Cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cartItems));
+  // }, [cartItems]);
 
   let incrementQunatity = (el) => {
     const newCartItems = cartItems.map((cartItem) => {
@@ -45,8 +49,8 @@ export const Cart = () => {
 
   let decrementQunatity = (el) => {
     const newCartItems = cartItems.map((cartItem) => {
-      if (cartItem.id === el.id && cartItem.count > 1) {
-        return { ...cartItem, count: cartItem.count - 1 };
+      if (cartItem.id === el.id && cartItem.quantity > 1) {
+        return { ...cartItem, count: cartItem.quantity - 1 };
       } else {
         return cartItem;
       }
@@ -60,7 +64,7 @@ export const Cart = () => {
   };
 
   const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.count,
+    (total, item) => total + item.cost * item.quantity,
     0
   );
 
@@ -74,7 +78,7 @@ export const Cart = () => {
     setCart([]);
   };
   return (
-    <Box width={"90%"} height={"100vh"} margin="auto">
+    <Box width={"90%"} margin="auto" height={"80vh"}>
       <Heading mt={5} textAlign={"center"}>
         Cart
       </Heading>
@@ -109,10 +113,10 @@ export const Cart = () => {
                     <Td>
                       <Flex>
                         <Center>
-                          <Img mr={3} boxSize={"20"} src={el.image[0]} />
+                          <Img mr={3} boxSize={"20"} src={el.image} />
                           <Box>
                             <Text noOfLines={1}>
-                              {el.name.substring(0, 20)}
+                              {el?.title?.substring(0, 20)}
                             </Text>
                             <Text
                               mt={2}
@@ -123,7 +127,7 @@ export const Cart = () => {
                               textTransform="uppercase"
                               textAlign={"left"}
                             >
-                              {el.brand.substring(0, 10)}
+                              {el?.genre?.substring(0, 10)}
                             </Text>
                           </Box>
                         </Center>
@@ -147,7 +151,7 @@ export const Cart = () => {
                             borderRadius={0}
                             bg={"none"}
                           >
-                            {el.count}
+                            {el.quantity}
                           </Button>
                           <Button
                             borderRadius={0}
@@ -180,7 +184,7 @@ export const Cart = () => {
                         Remove
                       </Button>
                     </Td>
-                    <Td fontWeight={500}>$ {parseInt(el.count * el.price)}</Td>
+                    <Td fontWeight={500}>$ {parseInt(el.quantity * el.cost)}</Td>
                   </Tr>
                 );
               })}
