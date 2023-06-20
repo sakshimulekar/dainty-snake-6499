@@ -13,9 +13,19 @@ const SingleProductPage = () => {
   }
 
   const { title, image, rating, cost, video } = product;
+  const AddtoCart=(prod)=>{
+    console.log(prod)
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(prod)
+    localStorage.setItem("cart" , JSON.stringify(cart))
+    alert("Product added to cart")
+    console.log(cart)
+  }
+
 
   return (
-    <Box p={4} borderWidth="1px" borderRadius="md" boxShadow="md">
+
+    <Box p={4} borderWidth="1px" borderRadius="md" boxShadow="md" height={"80vh"}>
         <div style={{display:"flex", justifyContent: "space-around",}}>
             <Image src={image} alt={title} mb={4} />
             <div style={{display:"flex", justifyContent: "center",flexDirection:"column"}}>
@@ -24,13 +34,14 @@ const SingleProductPage = () => {
       </Text>
 
       <Text mb={2} fontSize="30px">Rating: {rating}</Text>
-      <Text mb={2} fontSize="30px">Price: ${cost}</Text>
+      <Text mb={2} fontSize="30px">Price:{cost}</Text>
+
 
       <Button colorScheme="green" size="sm" mr={2}>
         Buy
       </Button>
       <br/>
-      <Button colorScheme="blue" size="sm">
+      <Button colorScheme="blue" size="sm" onClick={()=>AddtoCart(product)}>
         Rent
       </Button>
             </div>
