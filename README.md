@@ -8,3 +8,9 @@ This is a gaming website that offers game rental, game purchase with subscriptio
 - Game Purchase: Users can buy games by subscribing to a plan.
 - User Authentication: Users can register, login, and logout.
 - Payment Integration: Secure payment processing using Stripe.
+
+## Contributors:
+- Sakshi Mulekar (Team Lead)
+- Jayesh Khandelwal
+- Priti kushwah
+- Ganesh behera
