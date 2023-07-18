@@ -1,3 +1,4 @@
+# Local Netlify folde
 node_modules
-package-lock.json
 .env
+package-lock.json
